@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharing</title>
+</head>
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 15rem;
+        margin: 2rem;
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+
+    input {
+        padding: 0.3rem;
+        margin: 0.5rem;
+    }
+</style>
+
+<body>
+    <% if(locals.fileLink !=null){ %>
+        <div>
+            Your file is uploaded :
+            <a href="<%= locals.fileLink  %> ">
+                <%= locals.fileLink %>
+            </a>
+        </div>
+    <% } %>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <!-- Here we are using multipart/form-data bcoz we are sending a file in the form which can have multiple parts -->
+        <label for="file">File : </label>
+        <input type="file" name="file" id="file" required>
+        <label for="password">Password : </label>
+        <input type="password" name="password" id="password">
+        <button type="submit">Share</button>
+    </form>
+</body>
+
+</html>
